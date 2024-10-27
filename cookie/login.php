@@ -19,15 +19,16 @@
         ["un"=> "user", "pass" => "user123", "role" => "stuff"]
     ];
 
-    if($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_POST["btnLogin"])){
-        foreach ($user as $us){
-            if ($us["un"] == $_POST["username"] && $us["pass"] == $_POST["password"]){
-                $_SESSION["user"] = $us;
-                header("localhost: dashboard.php");
-            }
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btnLogin"])){
+    foreach ($user as $us){
+        if ($us["un"] == $_POST["username"] && $us["pass"] == $_POST["password"]){
+            $_SESSION["user"] = $us;
+            header("Location: dashboard.php");
+            exit(); // to prevent further execution of the script
         }
-            echo "Wrong Credentials";  
     }
+    echo "Wrong Credentials";  
+}
 //         if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //             $username = $_POST['username'];
 //             $password = $_POST['password'];
